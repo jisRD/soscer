@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>soscer</title>
+        <meta http-equiv="content-language" content="en">
+        <link rel="stylesheet" href="./css/chessboard-1.0.0.min.css">
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/chessboard-1.0.0.min.js"></script><script src="./js/chess.js"></script>
+    </head>
+    <body>
+    <div id="myBoard" style="width: 400px"></div>
+    <script>
+		var board = null
+var game = new Chess()
+
+function makeRandomMove () {
+  var possibleMoves = game.moves()
+
+  // exit if the game is over 
+  if (game.game_over()) return
+
+  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+  game.move(possibleMoves[randomIdx])
+  board.position(game.fen())
+
+  window.setTimeout(makeRandomMove, 1000)
+}
+
+board = Chessboard('myBoard', 'start')
+
+window.setTimeout(makeRandomMove, 5000)
+    </script>
+	
+  </body>
+ <footer> <small>&copy; Copyright 2020-2040, jishnu r dev</small> </footer> 
+
+</html>
